@@ -1,3 +1,7 @@
+## DER - Ejemplo
+
+![der](DER.png)
+
 ## Forma Normales en Bases de Datos (Normalizacion)
 ### 1NF (Primera Forma Normal):
 - Elimina grupos repetitivos.
