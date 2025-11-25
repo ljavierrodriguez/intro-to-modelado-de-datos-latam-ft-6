@@ -1,0 +1,28 @@
+personas
+-------
+id int pk
+nombre str
+fecha_nac date
+
+pasaportes
+-------
+id int pk
+numero str
+persona_id int fk - personas.id
+
+mascotas
+-------
+id int pk
+nombre str
+tipo str
+persona_id int fk >- personas.id
+
+cursos
+-----
+id int pk
+nombre str
+
+estudiantes_cursos
+------
+persona_id int pk fk >- personas.id
+curso_id int pk fk  >- cursos.id

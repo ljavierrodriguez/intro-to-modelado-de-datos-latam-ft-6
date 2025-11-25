@@ -1,0 +1,76 @@
+Datos Ejemplo:
+
+id  | nombre | fecha_nac | pasaporte | mascota_1 | mascota_1_tipo | mascota_2 | mascota_2_tipo | curso_1 | curso_2
+1   | Luis   | 1981-12-12 | AB123456 | Firulais  | Perro          | Michi     | Gato           | Ingles  | Coreano
+
+Problemas de esta tabla:
+- Campos Repetidos (mascota_1, mascota_2)
+- Columnas Multivalor (curso_1, curso_2)
+- Dependencias no claras
+- Pasaporte depende de persona pero esta incrustado
+- Mascotas depende de persona, pero esta en la misma fila
+- Cursos depende de una relacion M:N 
+
+1FN - Primera Forma Normal
+
+Requisitos:
+- No debe haber campos repetidos
+- No debe haber grupos multiples
+- Cada columna debe tener valores atomicos (indivisibles)
+
+Problemas:
+- mascota_1/mascota_2 -> No atomicos
+- curso_1 / curso_2 -> grupos repetidos
+
+Tabla Personas (1FN)
+id | nombre | fecha_nac  | pasaporte
+1  | Luis   | 1981-12-12 | AB123456
+
+Tabla Mascotas (1FN)
+persona_id | mascota_nombre | mascota_tipo
+1          | Firulais       | Perro
+1          | Michi          | Gato
+
+Tabla EstudianteCurso (1FN)
+persona_id | Curso
+1          | Ingles
+1          | Coreano
+
+2FN - Segunda Forma Normal
+- Estar en 1FN
+- Si hay clave compuesta, no debe existir dependencia parcial
+
+Tabla Cursos
+
+id | curso
+1  | Ingles
+2  | Coreano
+3  | Aleman
+
+Tabla EstudiateCurso (2FN) - Relacion Muchos a Muchos
+
+persona_id | curso_id
+1          | 1
+1          | 2
+
+3FN - Tercera Forma Nomal
+Requisitos:
+- Estar en 2FN
+- No debe haber dependencias transitivas
+    (campo no clave, dependan de otro campo no clave)
+
+Tabla Persona (3FN)
+
+id | nombre | fecha_nac
+1  | Luis   | 1981-12-12
+
+Tabla Pasaporte (3FN) - Relacion 1 a 1
+
+id | pasaporte_num | persona_id
+1  | AB123456      | 1
+
+
+Tabla Mascotas (3FN) - Relacion 1 a muchos
+id  | nombre   | tipo  | persona_id
+100 | Firulais | Perro | 1
+101 | Michi    | Gato  | 1
